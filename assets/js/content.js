@@ -162,6 +162,9 @@ const HOME = {
     ms: "Pembakar di Balai Ilmu, Kampung Sungai Judah"
   },
 
+  // The rotated stamp on the hero photo. The year comes from BRAND.since.
+  sinceStamp: { en: "Since", ms: "Sejak" },
+
   pillars: [
     {
       no: "01",
@@ -347,7 +350,8 @@ const ORDER = {
   },
   send:     { en: "Send order on WhatsApp", ms: "Hantar pesanan di WhatsApp" },
   review:   { en: "Review order",  ms: "Semak pesanan" },
-  selected: { en: "items selected", ms: "item dipilih" },
+  selected:    { en: "items selected", ms: "item dipilih" },
+  selectedOne: { en: "item selected",  ms: "item dipilih" },
   add:      { en: "Add",    ms: "Tambah" },
   remove:   { en: "Remove", ms: "Kurangkan" },
 
@@ -387,10 +391,13 @@ const PARTNERS = {
 
 const CREDITS = {
   title: { en: "Project credits", ms: "Penghargaan projek" },
-  // [F1]  TODO: replace the placeholder with the full class list.
+  // [F1] Group members, from the MPU project proposal (section 4.0).
   lines: [
-    { role:  { en: "Built by",    ms: "Dibina oleh" },
-      names: "[Student names — all group students in the class]" },
+    { role:  { en: "Built by Diploma in Information Technology students",
+               ms: "Dibina oleh pelajar Diploma Teknologi Maklumat" },
+      names: "Mohammad Ali Mehdi Shirazi · Mohammad Danish Bin Zaidi · Shim Xin Yee · " +
+             "Samantha Chok Zi Kay · Lau Jun Sin · Tan Xian Chuan · Edwin Tan Yong Shen · " +
+             "Wana Ye Thwe · Jayden Ryan Jit Singh · San Jie Fung · Liew Khai Lik" },
     { role:  { en: "With",        ms: "Bersama" },
       names: "Ms. Norsafizar · Mr. Sairolazmi · Ms. Syamim" },
     { role:  { en: "Advised by",  ms: "Diselia oleh" },

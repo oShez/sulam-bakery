@@ -212,7 +212,7 @@
           '<a class="btn btn--ghost" href="#/about">' + esc(t(HOME.heroCta2)) + "</a>" +
         "</div>" +
       "</div>" +
-      plateHTML({ src: ABOUT.photos[0].src, caption: HOME.heroCaption }, "Sejak " + BRAND.since) +
+      plateHTML({ src: ABOUT.photos[0].src, caption: HOME.heroCaption }, t(HOME.sinceStamp) + " " + BRAND.since) +
     "</div></div></section>" +
 
     '<section class="band band--tight"><div class="wrap"><div class="pillars">' +
@@ -454,7 +454,7 @@
 
     if (!open) { document.body.style.paddingBottom = ""; return; }
 
-    tray.querySelector("[data-tray-count]").textContent = n + " " + t(ORDER.selected);
+    tray.querySelector("[data-tray-count]").textContent = n + " " + t(n === 1 ? ORDER.selectedOne : ORDER.selected);
     tray.querySelector("[data-tray-total]").textContent = "RM " + money(cartTotal());
     tray.querySelector("[data-tray-wa]").setAttribute("href", waHref());
 

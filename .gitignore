@@ -7,3 +7,6 @@ dist/
 
 # Unused by the site - not published
 assets/img/ert-scooter.jpg
+
+# Shows "Ekonomi Rumah Tangga", which the lecturer asked not to display [E3]. Unused.
+assets/img/ert-banner.jpg

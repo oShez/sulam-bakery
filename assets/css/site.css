@@ -1,5 +1,5 @@
 /* ==========================================================================
-   [BAKERY NAME] — Kampung Sungai Judah
+   Roti Home Made Kampung Sg Judah
    Visual direction: kampung print shop / hand-painted signboard.
 
    You should not need to edit this file to change wording or prices.
@@ -543,9 +543,9 @@ body[data-tray="true"] { padding-bottom: 5.5rem; }
 .langsw button[aria-pressed="true"] { background: var(--ink); color: var(--paper-lift); }
 
 @media (max-width: 720px) {
-  .masthead__right { width: 100%; gap: .6rem; }
-  .masthead__right .nav { flex: 1; }
-  .langsw { align-self: flex-end; margin-top: .7rem; }
+  .masthead__right { width: 100%; gap: .6rem; border-top: 1px solid var(--rule-soft); padding-top: .7rem; }
+  .masthead__right .nav { flex: 1; border-top: 0; padding-top: 0; }
+  .langsw { align-self: center; }
 }
 
 /* ------------------------------------------------------------- product card */
