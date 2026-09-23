@@ -520,3 +520,122 @@ body[data-tray="true"] { padding-bottom: 5.5rem; }
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
 }
+
+/* ==========================================================================
+   Added 23 Sep 2026 — real products with photographs, bilingual switch,
+   project credits. Replaces the photo-less price board, now that we have
+   real pictures of the bread.
+   ========================================================================== */
+
+/* ---------------------------------------------------------- language switch */
+.masthead__right { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.2rem); flex-wrap: wrap; }
+
+.langsw { display: flex; border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; flex: none; }
+.langsw button {
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--text); font-size: .66rem; font-weight: 700;
+  letter-spacing: .12em; color: var(--ink-faint);
+  padding: .5rem .7rem; line-height: 1;
+  transition: background .15s ease, color .15s ease;
+}
+.langsw button + button { border-left: 1px solid var(--rule); }
+.langsw button:hover { color: var(--ink); }
+.langsw button[aria-pressed="true"] { background: var(--ink); color: var(--paper-lift); }
+
+@media (max-width: 720px) {
+  .masthead__right { width: 100%; gap: .6rem; }
+  .masthead__right .nav { flex: 1; }
+  .langsw { align-self: flex-end; margin-top: .7rem; }
+}
+
+/* ------------------------------------------------------------- product card */
+.prodlist { display: grid; gap: clamp(1.6rem, 3vw, 2.4rem); }
+
+.prod {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: clamp(1.4rem, 3vw, 2.4rem);
+  align-items: center;
+  padding-block: clamp(1.4rem, 2.5vw, 2rem);
+  border-top: 1px solid var(--rule);
+}
+.prod:last-child { border-bottom: 1px solid var(--rule); }
+
+.prod__shot { border: 1px solid var(--rule); padding: .5rem; background: var(--paper-lift); }
+.prod__shot img {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  filter: saturate(.96) contrast(1.02);
+}
+
+.prod__line { display: flex; align-items: baseline; gap: .7rem; }
+.prod__name {
+  font-family: var(--display);
+  font-variation-settings: "WONK" 1, "SOFT" 30;
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.015em;
+  margin: 0;
+  white-space: nowrap;
+}
+.prod__leader { flex: 1 1 auto; min-width: 1.5rem; border-bottom: 2px dotted var(--leader); transform: translateY(-.32em); }
+.prod__price {
+  font-family: var(--display); font-weight: 700;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.prod__price .cur { font-size: .62em; color: var(--ink-faint); margin-right: .2em; }
+
+.prod__unit {
+  display: flex; align-items: center; gap: .7rem; flex-wrap: wrap;
+  font-size: .64rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 600; margin: .5rem 0 0;
+}
+.prod__tag {
+  color: var(--red); border: 1px solid var(--red); border-radius: 2px;
+  padding: .25rem .5rem; font-size: .58rem; letter-spacing: .12em;
+}
+
+.prod__desc { color: var(--ink-soft); font-size: .97rem; margin: .9rem 0 0; max-width: 48ch; }
+.prod .qty { margin-top: 1.3rem; display: inline-flex; }
+
+.prod[data-active="true"] .prod__name { color: var(--red); }
+.prod[data-active="true"] .prod__shot { border-color: var(--gold); }
+
+@media (max-width: 720px) {
+  .prod { grid-template-columns: 1fr; gap: 1.2rem; }
+  .prod__name { white-space: normal; }
+  .prod__leader { display: none; }
+}
+
+/* ------------------------------------------------------- two phone numbers */
+.cta__num { display: block; margin-bottom: 1.1rem; }
+.cta__num small {
+  display: block; font-family: var(--text); font-size: .62rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(241,234,218,.55); font-weight: 600; margin-top: .3rem;
+}
+.deet__v em { font-style: normal; font-size: .76rem; color: var(--ink-faint); }
+
+/* ------------------------------------------------------------------ thanks */
+.thanks {
+  font-family: var(--display);
+  font-variation-settings: "WONK" 1, "SOFT" 60;
+  font-size: clamp(1.3rem, 2.8vw, 2rem);
+  font-weight: 400; font-style: italic;
+  text-align: center; color: var(--gold); margin: 0;
+}
+
+/* ----------------------------------------------------------------- credits */
+.credits__title {
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  padding-bottom: .8rem; border-bottom: 2px solid var(--ink); margin-bottom: .4rem;
+}
+.credits { margin: 0; }
+.credits dt {
+  font-size: .64rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--ink-faint); font-weight: 700; margin-top: 1.4rem;
+}
+.credits dd { margin: .4rem 0 0; font-size: .98rem; color: var(--ink-soft); }
+
+/* Single partner mark should not stretch across three columns. */
+.partners__marks--single { grid-template-columns: 1fr; }
