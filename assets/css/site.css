@@ -29,7 +29,7 @@
   --wrap: 1180px;
   --gutter: clamp(1.25rem, 4vw, 3.5rem);
   --wonk: "WONK" 1, "SOFT" 22;
-  --step: clamp(4rem, 9vw, 7.5rem);
+  --step: clamp(3.5rem, 8vw, 6.25rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -47,16 +47,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Paper fibre. Sits above everything, catches no clicks. */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 900;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
-}
+/* Paper texture now lives underneath the content: see "Paper texture" at the end of this file. */
 
 img { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -639,3 +630,55 @@ body[data-tray="true"] { padding-bottom: 5.5rem; }
 
 /* Single partner mark should not stretch across three columns. */
 .partners__marks--single { grid-template-columns: 1fr; }
+
+
+/* ==========================================================================
+   Paper texture, wheat stamps and section rhythm  (added 24 Sep 2026)
+   The wheat sprig is drawn from the bakery's own poster, which uses wheat.
+   Texture sits UNDER the content so photographs stay clean.
+   ========================================================================== */
+:root {
+  --grain:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E %3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E %3CfeColorMatrix values='0 0 0 0 .27 0 0 0 0 .19 0 0 0 0 .11 .55 0 0 0 -.19'/%3E%3C/filter%3E %3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E %3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E %3CfeColorMatrix values='0 0 0 0 .95 0 0 0 0 .92 0 0 0 0 .86 .45 0 0 0 -.17'/%3E%3C/filter%3E %3Crect width='100%' height='100%' filter='url(%23n)'/%3E%3C/svg%3E");
+  --wheat:       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 222' fill='none' stroke='%23A8853C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M40 218 C39 172 41 124 40 44'/%3E%3Cellipse cx='40' cy='30' rx='6' ry='13'/%3E%3Cpath d='M40 17 L40 3'/%3E%3Cellipse cx='31' cy='50' rx='6' ry='13' transform='rotate(-30 31 50)'/%3E%3Cellipse cx='49' cy='50' rx='6' ry='13' transform='rotate(30 49 50)'/%3E%3Cpath d='M24.5 38.7 L16.7 25.2'/%3E%3Cpath d='M55.5 38.7 L63.3 25.2'/%3E%3Cellipse cx='31' cy='72' rx='6' ry='13' transform='rotate(-30 31 72)'/%3E%3Cellipse cx='49' cy='72' rx='6' ry='13' transform='rotate(30 49 72)'/%3E%3Cpath d='M24.5 60.7 L16.7 47.2'/%3E%3Cpath d='M55.5 60.7 L63.3 47.2'/%3E%3Cellipse cx='31' cy='94' rx='6' ry='13' transform='rotate(-30 31 94)'/%3E%3Cellipse cx='49' cy='94' rx='6' ry='13' transform='rotate(30 49 94)'/%3E%3Cpath d='M24.5 82.7 L16.7 69.2'/%3E%3Cpath d='M55.5 82.7 L63.3 69.2'/%3E%3Cellipse cx='32' cy='116' rx='5.5' ry='12' transform='rotate(-28 32 116)'/%3E%3Cellipse cx='48' cy='116' rx='5.5' ry='12' transform='rotate(28 48 116)'/%3E%3Cpath d='M26.4 105.4 L20.8 94.8'/%3E%3Cpath d='M53.6 105.4 L59.2 94.8'/%3E%3Cpath d='M40 176 C30 168 22 156 19 140 C29 146 36 157 40 176'/%3E%3C/svg%3E");
+  /* warms the empty side margins on wide screens */
+  --vignette: linear-gradient(90deg, rgba(120,88,45,.085) 0, rgba(120,88,45,0) 20%,
+                              rgba(120,88,45,0) 80%, rgba(120,88,45,.085) 100%);
+}
+
+body            { background-image: var(--grain), var(--vignette); }
+.masthead       { background-image: var(--grain), var(--vignette); }
+.band--deep     { background-image: var(--grain); }
+.band--ink,
+.footer         { background-image: var(--grain-light); }
+
+/* Wheat sprigs standing in the empty side margins of each page's opening band */
+.sprigs { position: relative; overflow: hidden; }
+.sprigs > .wrap { position: relative; z-index: 1; }
+.sprigs::before, .sprigs::after {
+  content: ""; position: absolute; z-index: 0; pointer-events: none; display: none;
+  width: 110px; height: 305px;
+  background: var(--wheat) center / contain no-repeat;
+}
+.sprigs::before { left:  calc((100% - var(--sprig-w, 1180px)) / 4 - 55px); top: 12%;   transform: rotate(-11deg); opacity: .34; }
+.sprigs::after  { right: calc((100% - var(--sprig-w, 1180px)) / 4 - 55px); bottom: 8%; transform: rotate(9deg) scaleX(-1); opacity: .24; }
+@media (min-width: 1500px) { .sprigs::before, .sprigs::after { display: block; } }
+.sprigs--tight { --sprig-w: 880px; }
+@media (min-width: 1200px) { .sprigs--tight::before, .sprigs--tight::after { display: block; } }
+
+/* A large gold sprig tucked into the corner of the dark order band */
+.band--ink { position: relative; overflow: hidden; }
+.band--ink > .wrap { position: relative; z-index: 1; }
+.band--ink::after {
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  right: -26px; bottom: -58px; width: 175px; height: 485px;
+  background: var(--wheat) center / contain no-repeat;
+  transform: rotate(17deg); opacity: .16;
+}
+
+/* Printer's ornament: two sprigs between hairlines, marking a section start */
+.fleuron { display: flex; align-items: center; gap: 1rem; margin: 0 auto 2.6rem; max-width: 24rem; }
+.fleuron::before, .fleuron::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.fleuron span { width: 15px; height: 42px; background: var(--wheat) center / contain no-repeat; opacity: .9; }
+.fleuron span:first-of-type { transform: rotate(-24deg); }
+.fleuron span:last-of-type  { transform: rotate(24deg) scaleX(-1); margin-left: -.55rem; }

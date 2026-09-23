@@ -201,7 +201,7 @@
 
   function viewHome() {
     return '' +
-    '<section class="hero"><div class="wrap"><div class="hero__grid">' +
+    '<section class="hero sprigs"><div class="wrap"><div class="hero__grid">' +
       "<div>" +
         '<p class="kicker">' + esc(t(HOME.heroKicker)) + "</p>" +
         '<h1 class="hero__title">' + esc(t(HOME.heroTitle)) + "</h1>" +
@@ -215,7 +215,7 @@
       plateHTML({ src: ABOUT.photos[0].src, caption: HOME.heroCaption }, t(HOME.sinceStamp) + " " + BRAND.since) +
     "</div></div></section>" +
 
-    '<section class="band band--tight"><div class="wrap"><div class="pillars">' +
+    '<section class="band band--tight band--deep"><div class="wrap"><div class="pillars">' +
       HOME.pillars.map(function (p) {
         return '<article class="pillar">' +
           '<span class="pillar__no">' + esc(p.no) + "</span>" +
@@ -226,6 +226,7 @@
     "</div></div></section>" +
 
     '<section class="band band--tight"><div class="wrap wrap--tight">' +
+      '<div class="fleuron" aria-hidden="true"><span></span><span></span></div>' +
       '<div class="featured__head">' +
         "<h2>" + esc(t(HOME.featuredTitle)) + "</h2>" +
         '<span class="featured__note">' + esc(t(HOME.featuredNote)) + "</span>" +
@@ -277,7 +278,7 @@
 
   function viewAbout() {
     return '' +
-    '<section class="band"><div class="wrap wrap--tight">' +
+    '<section class="band sprigs sprigs--tight"><div class="wrap wrap--tight">' +
       '<p class="kicker">' + esc(t(ABOUT.kicker)) + "</p>" +
       "<h1>" + esc(t(ABOUT.title)) + "</h1>" +
       '<p class="lede" style="margin-top:1.8rem;max-width:52ch">' + esc(t(ABOUT.lede)) + "</p>" +
@@ -323,7 +324,7 @@
 
   function viewCatalogue() {
     return '' +
-    '<section class="band"><div class="wrap wrap--tight">' +
+    '<section class="band sprigs sprigs--tight"><div class="wrap wrap--tight">' +
       '<div class="board__head">' +
         "<div>" +
           '<p class="kicker">' + esc(t(CATALOGUE.kicker)) + "</p>" +
@@ -368,7 +369,7 @@
       : "";
 
     return '' +
-    '<section class="band"><div class="wrap"><div class="contact__grid">' +
+    '<section class="band sprigs"><div class="wrap"><div class="contact__grid">' +
       "<div>" +
         '<p class="kicker">' + esc(t(CONTACT_PAGE.kicker)) + "</p>" +
         "<h1>" + esc(t(CONTACT_PAGE.title)) + "</h1>" +
