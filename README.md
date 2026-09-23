@@ -1,78 +1,80 @@
-# [BAKERY NAME] — Kampung Sungai Judah
+# Roti Home Made Kampung Sg Judah
 
-A storefront website for the community bakery that came out of the **Ekonomi
-Rumah Tangga (ERT) Baking Class**, held at Balai Ilmu, Kampung Sungai Judah on
+The website for a community bakery in Kampung Sungai Judah, Pulau Carey — run
+by seven bakers who learned at a baking class held at Balai Ilmu on
 20 July 2026.
 
-This is a **draft for team review**. Most of the wording is real, but the
-bakery name, the menu, the prices and the contact details are placeholders.
+**Live site: https://oshez.github.io/sulam-bakery/**
+
+A SULAM community project with the Centre for Continuing Education,
+Sunway College.
 
 ---
 
-## Look at it
+## Looking at it
 
-Open `index.html` in a browser. That's it — no install, no build step.
+Open `index.html` in a browser. No install, no build step.
 
-Four pages, all reachable from the top navigation:
+Four pages, in English and Bahasa Melayu:
 
 | Page | What's on it |
 |---|---|
-| **Utama** (Home) | Hero, three short blocks, a few featured items, origin story, order call-to-action |
-| **Tentang** (About) | The ERT story, the numbers, the equipment, photo gallery |
-| **Katalog** (Catalogue) | The price board — 12 items across 3 sections, with the order builder |
-| **Hubungi** (Contact) | WhatsApp, socials, address, opening hours, order summary |
+| **Home / Utama** | The bakers, what makes the bread, both products, the story, how to order |
+| **About / Tentang** | The village, the class, the equipment, photos, project credits |
+| **Menu** | Both breads with photographs, prices, and the order builder |
+| **Order / Pesan** | WhatsApp numbers, hours, delivery, payment, and your order summary |
 
----
+Switch language with the **EN / BM** buttons in the top corner. The choice is
+remembered in that browser.
 
-## Things to look at when you review it
+## The order builder
 
-- **The bakery has no name yet.** It says `[BAKERY NAME]` everywhere. Deciding
-  this is probably the first thing the team needs to agree on.
-- **The menu is invented.** Twelve realistic Malaysian items with made-up
-  prices, so the price board looks like a real menu instead of twelve blanks.
-  None of it is real. See "Switching to blanks" below.
-- **The contact details are fake.** The WhatsApp number is `+60 12-345 6789`.
-  The order button works, it just messages a number that doesn't exist.
-- **There are only two real photos from the baking class** — the group shot
-  outside Balai Ilmu, and the banner. Nobody photographed the bread, the dough,
-  the ovens, or anyone baking. **If we can get product photos, the site gets a
-  lot better.** That's the biggest gap.
-
-## Try the order builder
-
-1. Go to **Katalog**
-2. Tap the `+` next to a few items
-3. A bar appears at the bottom with the running total
-4. **Semak pesanan** shows the full order on the Contact page
-5. **Hantar via WhatsApp** opens WhatsApp with the order already written out
-
-The order survives moving between pages. It clears when you close the tab.
+On the Menu page, tap `+` on a bread. A bar appears at the bottom with the
+running total. **Send order on WhatsApp** opens WhatsApp with the whole order
+already written out, addressed to Encik Azmi.
 
 ---
 
 ## Changing things
 
-**Everything you'd want to edit is in one file: `assets/js/content.js`**
+**Everything you'd want to edit is in `assets/js/content.js`.** It is
+commented throughout, and you do not need to touch the design files.
 
-The bakery name, tagline, WhatsApp number, socials, address, opening hours,
-every product, every price, all the page wording, the partner credits. It's
-commented throughout. You don't need to touch the design files.
-
-### Switching to blanks
-
-Near the top of `content.js`:
+The site is bilingual, so most text looks like this:
 
 ```js
-const USE_SAMPLE_DATA = true;   // change to false
+{ en: "Made fresh daily", ms: "Dibuat segar setiap hari" }
 ```
 
-`true` shows the realistic sample menu. `false` shows `[Item Name 01]` style
-placeholders instead — use that once you're filling in the real items.
+Edit both halves. To change which language the site opens in, edit the line
+near the top:
 
-### Replacing a photo
+```js
+const DEFAULT_LANG = "en";   // or "ms"
+```
 
-Drop your image into `assets/img/`, then point at it in `content.js`
-(look for `ABOUT.photos`). Keep them under about 400 KB each.
+### Publishing a change
+
+```bash
+git add -A && git commit -m "Update prices" && git push
+```
+
+The live site updates about a minute later.
+
+---
+
+## Still outstanding
+
+- **Prices.** RM3.50 and RM3.00 come from the current poster, which marks them
+  as promotional. Replace them when the updated price list arrives.
+- **Student names.** `CREDITS` in `content.js` still holds a placeholder for
+  the full class list.
+- **Instagram and TikTok.** The accounts exist but the handles need confirming
+  with G4 and G7. Set them in `CONTACT` and the buttons appear automatically.
+- **Photographs.** The two product photos are cropped from the bakery's own
+  poster. Better photographs of the bread, and any photographs of the baking
+  itself, would improve the site a great deal.
+- **A logo**, if one is wanted.
 
 ---
 
@@ -82,39 +84,28 @@ Drop your image into `assets/img/`, then point at it in `content.js`
 index.html               the page shell
 assets/css/site.css      all the design
 assets/js/content.js     <- the only file you need to edit
-assets/js/app.js         page switching + the order builder
-assets/img/              photos
-build_single.py          bundles it all into one file (see below)
-dist/                    the bundled output
+assets/js/app.js         page switching, language, order builder
+assets/img/              photographs
+make_qr.py               regenerates the QR code
+build_single.py          bundles everything into one file
 ```
 
-## Rebuilding the shareable link
+`python make_qr.py` writes `bakery-qr.png` for the live URL. Pass a different
+URL as an argument if the site ever moves.
 
-If you change anything and want to refresh the hosted version:
-
-```bash
-python build_single.py
-```
-
-That writes `dist/index.html` — one self-contained file with the CSS, the
-JavaScript and the photos all embedded. You can e-mail it or put it on a USB
-stick and it will work with nothing next to it.
+`python build_single.py` writes `dist/index.html` — one self-contained file
+with the CSS, JavaScript and photographs embedded, which works with nothing
+beside it.
 
 ---
 
 ## Design notes
 
-Set in **Fraunces** (headlines) and **Archivo** (everything else). Colours are
-sampled from the actual ERT banner in the project photos — cream paper, olive
-gold, cocoa brown, brick red.
+Set in **Fraunces** for headings and **Archivo** for everything else. The
+colours are sampled from the baking class banner — cream paper, olive gold,
+cocoa brown, brick red.
 
-The direction is a **kampung print shop**: paper rather than white, hairline
-rules rather than floating cards, a price list set like a hand-painted shop
-signboard with dot leaders running to the price, and rubber-stamp badges. It
-deliberately avoids the current website defaults — no gradients, no glassy
-panels, no rows of identical icon cards.
-
-## Credit
-
-Built for a SULAM community project — Kampung Sungai Judah x Centre for
-Continuing Education, Sunway College Kuala Lumpur. Supports SDG 1, 8 and 12.
+The direction is a kampung print shop: paper rather than white, hairline rules
+rather than floating cards, dot leaders running from each bread to its price,
+and rubber-stamp badges. It avoids the usual website defaults — no gradients,
+no glassy panels, no rows of identical icon cards.
