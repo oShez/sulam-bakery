@@ -135,9 +135,9 @@
     }
 
     return '<article class="prod" data-row="' + i + '" data-active="' + (qty > 0) + '">' +
-      '<div class="prod__shot">' +
-        '<img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy">' +
-      "</div>" +
+      (it.img
+        ? '<div class="prod__shot"><img src="' + esc(it.img) + '" alt="' + esc(it.name) + '" loading="lazy"></div>'
+        : '<div class="prod__shot prod__shot--none"><span>' + esc(t(CATALOGUE.noPhoto)) + "</span></div>") +
       '<div class="prod__body">' +
         '<div class="prod__line">' +
           '<h3 class="prod__name">' + esc(it.name) + "</h3>" +
@@ -232,7 +232,8 @@
         '<span class="featured__note">' + esc(t(HOME.featuredNote)) + "</span>" +
       "</div>" +
       '<div class="prodlist">' +
-        MENU.map(function (it, i) { return productHTML(it, i, false); }).join("") +
+        // home features only the breads that have a photo
+        MENU.map(function (it, i) { return it.img ? productHTML(it, i, false) : ""; }).join("") +
       "</div>" +
       '<p style="margin-top:2.2rem">' +
         '<a class="btn btn--ghost" href="#/catalogue">' + esc(t(HOME.featuredCta)) +

@@ -94,17 +94,61 @@ const CONTACT = {
    --------------------------------------------------------------------------
    Only bread for now, and no categories — both confirmed.
 
-   NOTE ON PRICES: RM3.50 and RM3.00 come from the current poster, which
-   labels them "harga promosi hari ini sahaja". Ms Nabilah is sending an
-   updated price list — replace the numbers below when it arrives.
+   Prices and weights from the updated list (29 Oct 2026).
+   img: null shows a "photo coming soon" frame; drop a photo into
+   assets/img/ and put its path here when one is taken.
    -------------------------------------------------------------------------- */
 
 const MENU = [
   {
-    name:  "Roti Sosej",
+    name:  "Kaya Bun",
+    price: 3.00,
+    img:   null,
+    unit:  { en: "each · 60 g", ms: "sebiji · 60 g" },
+    tag:   null,
+    desc: {
+      en: "Soft bun filled with kaya, the sweet coconut and egg jam.",
+      ms: "Roti lembut berinti kaya."
+    }
+  },
+  {
+    name:  "Red Bean Bun",
+    price: 3.00,
+    img:   null,
+    unit:  { en: "each · 60 g", ms: "sebiji · 60 g" },
+    tag:   null,
+    desc: {
+      en: "Soft bun filled with sweet red bean paste.",
+      ms: "Roti lembut berinti kacang merah manis."
+    }
+  },
+  {
+    name:  "Kaya Pandan Bun",
+    price: 3.00,
+    img:   null,
+    unit:  { en: "each · 60 g", ms: "sebiji · 60 g" },
+    tag:   null,
+    desc: {
+      en: "Soft bun filled with pandan kaya.",
+      ms: "Roti lembut berinti kaya pandan."
+    }
+  },
+  {
+    name:  "Cheese Bun",
+    price: 3.50,
+    img:   "assets/img/roti-keju.jpg",
+    unit:  { en: "each · 80 g", ms: "sebiji · 80 g" },
+    tag:   null,
+    desc: {
+      en: "Layered bread baked until golden, with cheese folded through every layer.",
+      ms: "Roti berlapis dibakar sehingga keperangan, dengan keju di setiap lapisan."
+    }
+  },
+  {
+    name:  "Sausage Bun",
     price: 3.50,
     img:   "assets/img/roti-sosej.jpg",
-    unit:  { en: "each", ms: "sebiji" },
+    unit:  { en: "each · 60 g", ms: "sebiji · 60 g" },
     tag:   null,
     desc: {
       en: "Soft bread wrapped around a whole sausage, finished with chilli sauce, mayonnaise and spring onion.",
@@ -112,14 +156,14 @@ const MENU = [
     }
   },
   {
-    name:  "Roti Keju",
-    price: 3.00,
-    img:   "assets/img/roti-keju.jpg",
-    unit:  { en: "each", ms: "sebiji" },
-    tag:   { en: "Limited edition", ms: "Edisi terhad" },
+    name:  "Chocolate Bun",
+    price: 3.50,
+    img:   null,
+    unit:  { en: "each · 60 g", ms: "sebiji · 60 g" },
+    tag:   null,
     desc: {
-      en: "Layered bread baked until golden, with cheese folded through every layer.",
-      ms: "Roti berlapis dibakar sehingga keperangan, dengan keju di setiap lapisan."
+      en: "Soft bun with a chocolate filling.",
+      ms: "Roti lembut berinti coklat."
     }
   }
 ];
@@ -259,7 +303,7 @@ const ABOUT = {
 
   facts: [
     { figure: "7",        label: { en: "bakers",          ms: "pembakar" } },
-    { figure: "2",        label: { en: "kinds of bread",  ms: "jenis roti" } },
+    { figure: "6",        label: { en: "kinds of bread",  ms: "jenis roti" } },
     { figure: "20.07.26", label: { en: "first day",       ms: "hari pertama" } },
     { figure: "1",        label: { en: "village kitchen", ms: "dapur kampung" } }
   ],
@@ -307,9 +351,10 @@ const CATALOGUE = {
     ms: "Buat masa ini roti sahaja, dibakar mengikut tempahan. Tambah apa yang anda mahu dan hantar terus ke WhatsApp kami — mesejnya ditulis sendiri."
   },
   footnote: {
-    en: "Prices are from our current poster and may change. All prices in Malaysian Ringgit.",
-    ms: "Harga diambil daripada poster semasa dan boleh berubah. Semua harga dalam Ringgit Malaysia."
-  }
+    en: "Prices may change. All prices in Malaysian Ringgit.",
+    ms: "Harga boleh berubah. Semua harga dalam Ringgit Malaysia."
+  },
+  noPhoto: { en: "Photo coming soon", ms: "Gambar akan menyusul" }
 };
 
 

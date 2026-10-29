@@ -558,6 +558,17 @@ body[data-tray="true"] { padding-bottom: 5.5rem; }
   filter: saturate(.96) contrast(1.02);
 }
 
+/* No photo yet: an empty frame of the same size, with a wheat sprig */
+.prod__shot--none span {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem;
+  aspect-ratio: 4 / 3; border: 1px dashed var(--rule); background: var(--paper-deep);
+  font-size: .62rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-faint);
+}
+.prod__shot--none span::before {
+  content: ""; width: 22px; height: 60px; opacity: .55;
+  background: var(--wheat) center / contain no-repeat;
+}
+
 .prod__line { display: flex; align-items: baseline; gap: .7rem; }
 .prod__name {
   font-family: var(--display);

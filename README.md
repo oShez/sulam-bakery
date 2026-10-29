@@ -65,8 +65,8 @@ The live site updates about a minute later.
 
 ## Still outstanding
 
-- **Prices.** RM3.50 and RM3.00 come from the current poster, which marks them
-  as promotional. Replace them when the updated price list arrives.
+- **Product photos.** Kaya, Red Bean, Kaya Pandan and Chocolate buns show a
+  "photo coming soon" frame. Add a photo to `assets/img/` and set its `img`.
 - **Student names.** `CREDITS` in `content.js` still holds a placeholder for
   the full class list.
 - **Instagram and TikTok.** The accounts exist but the handles need confirming
